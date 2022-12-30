@@ -1,12 +1,13 @@
 import logging
 from aiogram import executor
 from config import dp
-from hendlers import napominalka, fsm_anketa
+from hendlers import napominalka, fsm_anketa, client
 from database.bot_base import sql_create
 import asyncio
 
 fsm_anketa.register_handlers_fsm_anketa(dp)
 napominalka.register_handlers_napominalka(dp)
+client.register_comands_hendler(dp)
 
 async def on_startup(_):
     asyncio.create_task(napominalka.scheduler())
